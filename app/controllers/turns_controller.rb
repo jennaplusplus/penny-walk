@@ -3,9 +3,14 @@ class TurnsController < ApplicationController
     @turn = Turn.find(params[:id])
     if @turn.left_right == true
       @direction = "right"
-    else
+      @heads_or_tails = "HEADS"
+    elsif @turn.left_right == false
       @direction = "left"
+      @heads_or_tails = "TAILS"
+    else
+      @direction = "straight"
     end
+
   end
 
   def generate_left_right
