@@ -1,5 +1,5 @@
 #this logic takes the L/R, # of blocks, and sequence data from the turns model and outputs a html canvas document.
-# 
+#
 # left_right = [nil, false, false, true, false, true, true]
 # blocks = [3, 1, 3, 1, 2, 3, 1]
 # sequence = [0, 1, 2, 3, 4, 5, 6]
@@ -68,6 +68,7 @@ def image_wh(x_array, y_array)
   else
     convert_ratio = 500/img_height
   end
+  return convert_ratio
 end
 
 def image_to_canvas_points(convert_ratio, x_array, y_array)
