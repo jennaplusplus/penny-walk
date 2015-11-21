@@ -1,11 +1,8 @@
 class WalkersController < ApplicationController
 
-  def start
-
-  end
-
   def index
-
+    @walkers = Walker.all
+    render :index
   end
 
   def show
