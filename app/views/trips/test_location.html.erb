@@ -1,9 +1,0 @@
-<p>
-  <%= "latitude is #{@start_latitude}" %>
-</p>
-<p>
-  <%= "longitude is #{@start_longitude}" %>
-</p>
-<%= link_to "on google maps", "http://maps.google.com/maps?q=#{@start_latitude},#{@start_longitude}" %>
-
-<%= link_to "update trip with final location", walker_trip_path(walker_id: @trip.walker_id, id: params[:id]), method: :patch %>

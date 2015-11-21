@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
   def index
     w = Walker.find(params[:walker_id])
+    @trips = w.trips
   end
 
   def generate_left_right
@@ -20,10 +21,9 @@ class TripsController < ApplicationController
 
   def create
     walker_id = params[:walker_id]
-    start_latitude = "37.4275124"
-    start_longitude = "-122.1818026"
+    start_latitude, start_longitude = Trip.get_current_location
     trip = Trip.create(walker_id: walker_id, start_latitude: start_latitude, start_longitude: start_longitude)
-    first_turn_of_trip = Turn.create(blocks: generate_blocks, trip_id: trip.id, sequence: 1) # create the first turn
+    first_turn_of_trip = Turn.create(blocks: generate_blocks, trip_id: trip.id, sequence: 0) # create the first turn
     redirect_to walker_trip_turn_path(walker_id: walker_id, trip_id: trip.id, id: first_turn_of_trip.id)
   end
 
@@ -31,16 +31,24 @@ class TripsController < ApplicationController
 
   end
 
-  def test_location
-    @trip = Trip.find(params[:id])
-    @start_latitude, @start_longitude = @trip.get_current_location
-  end
-
   def update
     @trip = Trip.find(params[:id])
-    end_latitude, end_longitude = @trip.get_current_location
+    end_latitude, end_longitude = Trip.get_current_location
     @trip.update(end_latitude: end_latitude, end_longitude: end_longitude)
-    redirect_to test_location_path(walker_id: @trip.walker_id, id: params[:id])
+    redirect_to action: :end_trip
+  end
+
+  def end_trip
+    @trip = Trip.find(params[:id])
+    @start_latitude = @trip.start_latitude
+    @start_longitude = @trip.start_longitude
+    @end_latitude, @end_longitude = Trip.get_current_location
+    blocks_traveled = 0
+    @trip.turns.each do |turn|
+      blocks_traveled += turn.blocks
+    end
+    @blocks_traveled = blocks_traveled
+    render :endtrip
   end
 
 end
