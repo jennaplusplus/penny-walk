@@ -134,10 +134,10 @@ class TripsController < ApplicationController
   def image_convert_params(x_array, y_array)
     img_width = x_array.max - x_array.min
     img_height = y_array.max - y_array.min
-    if 450/img_width < 450/img_height
-      convert_ratio = 450/img_width
+    if 275/img_width < 275/img_height
+      convert_ratio = 275/img_width
     else
-      convert_ratio = 450/img_height
+      convert_ratio = 275/img_height
     end
     return convert_ratio
   end

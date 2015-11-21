@@ -13,8 +13,8 @@
               ctx.beginPath();
               ctx.strokeStyle='purple';
               ctx.lineWidth=5;
-              ctx.moveTo(xCoords[i],yCoords[i]*-1);
-              ctx.lineTo(xCoords[i+1],yCoords[i+1]*-1);
+              ctx.moveTo(yCoords[i]*-1,xCoords[i]);
+              ctx.lineTo(yCoords[i+1]*-1,xCoords[i+1]);
               ctx.stroke();
           }
 
@@ -32,22 +32,28 @@
    <h1>It's over!</h1>
   <h2>You traveled <%= @blocks_traveled %> blocks.</h2>
 
-  <canvas id="tutorial" width="500" height="500"></canvas>
+  <div class="endtrip">
+    <canvas id="tutorial" width="300" height="300"></canvas>
+    <p>
+      <%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
+    </p>
+    <p>
+      <%= link_to "See my trips", walker_trips_path(@walker.id) %>
+    </p>
+  </div>
 
 
+  <div class="endtrip">
+    <p>
+        <%= link_to "Click for Google maps directions back to your starting location", "http://maps.google.com/?saddr=#{@end_latitude},#{@end_longitude}&daddr=#{@start_latitude},#{@start_longitude}&dirflg=w" %>
+    </p>
 
-  <p>
-      <%= link_to "Click for Google maps directions back to your starting location", "http://maps.google.com/?saddr=#{@end_latitude},#{@end_longitude}&daddr=#{@start_latitude},#{@start_longitude}&dirflg=w" %>
-  </p>
+    <p>
+      <iframe width="600" height="450" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/directions?origin=<%=@end_latitude%>,<%=@end_longitude%>&destination=<%=@start_latitude%>,<%=@start_longitude%>&mode=walking&key=<%= ENV['GOOGLE_KEY'] %>" allowfullscreen></iframe>
+    </p>
 
-  <p>
-    <iframe width="600" height="450" frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/directions?origin=<%=@end_latitude%>,<%=@end_longitude%>&destination=<%=@start_latitude%>,<%=@start_longitude%>&mode=walking&key=<%= ENV['GOOGLE_KEY'] %>" allowfullscreen></iframe>
-  </p>
-  <p>
-    <%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
-  </p>
-  <p>
-    <%= link_to "See my trips", walker_trips_path(@walker.id) %>
-  </p>
+  </div>
+
+
  </body>
