@@ -8,4 +8,8 @@ class WalkersController < ApplicationController
 
   end
 
+  def show
+    @walker = Walker.find(params[:id])
+  end
+
 end
