@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root 'walkers#index'
 
+  get 'walkers/:walker_id/trips/:id/endtrip' => 'trips#end_trip', as: :end_trip
   get 'walkers/:walker_id/trips/:id/test_location' => 'trips#test_location', as: :test_location
 
   resources :walkers do

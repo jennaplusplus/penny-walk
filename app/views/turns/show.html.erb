@@ -16,3 +16,5 @@
 <% end %>
 
 <h3> Now click Penny for the next direction! </h3>
+
+<%= link_to "Finished!", walker_trip_path(walker_id: params[:walker_id], id: params[:trip_id]), method: :patch  %> 

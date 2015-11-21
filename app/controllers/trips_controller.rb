@@ -40,7 +40,20 @@ class TripsController < ApplicationController
     @trip = Trip.find(params[:id])
     end_latitude, end_longitude = @trip.get_current_location
     @trip.update(end_latitude: end_latitude, end_longitude: end_longitude)
-    redirect_to test_location_path(walker_id: @trip.walker_id, id: params[:id])
+    redirect_to action: :end_trip
+  end
+
+  def end_trip
+    @trip = Trip.find(params[:id])
+    @start_latitude = @trip.start_latitude
+    @start_longitude = @trip.start_longitude
+    @end_latitude, @end_longitude = @trip.get_current_location
+    blocks_traveled = 0
+    @trip.turns.each do |turn|
+      blocks_traveled += turn.blocks
+    end
+    @blocks_traveled = blocks_traveled
+    render :endtrip
   end
 
 end
