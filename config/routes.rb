@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'walker#start'
+  root 'walkers#start'
 
   resources :walkers
 
