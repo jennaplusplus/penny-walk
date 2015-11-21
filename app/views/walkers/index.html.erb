@@ -1,11 +1,8 @@
-<h1>Choose a walker (i.e., log in)</h1>
-<h3>Create a new walker (i.e., create an account)</h3>
-<h4>Table of walkers</h4>
+<h1>Choose a walker</h1>
+<h3><%= link_to "Or create a new walker", new_walker_path %></h3>
 
 <% @walkers.each do |walker| %>
   <p>
     <%= link_to walker.name, walker_path(walker) %>
   </p>
 <% end %>
-
-<h3><%= link_to "New Walker", new_walker_path %></h3>

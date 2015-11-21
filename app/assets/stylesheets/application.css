@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+* {
+  font-family: 'Varela Round', sans-serif;
+}
+
+a:visited {
+  color: blue;
+}
+
+body {
+  background-color: #F0F8FF;
+}

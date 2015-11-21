@@ -1,11 +1,12 @@
 <h1>You're on step <%= @turn.sequence %> of your trip </h1>
 
 <% if @turn.sequence == 1 %>
-  <h3>To begin your trip, head <%= @direction %> for <%= @turn.blocks %> block<%= "s" if @turn.blocks != 1 %> </h3>
+  <h3>To begin your trip, head <%= @direction %> for <%= @turn.blocks %> block<%= "s" if @turn.blocks != 1 %>. </h3>
 <% else %>
   <h2> <%= @heads_or_tails %>! </h2>
   <h3>Head <%= @direction %> for <%= @turn.blocks %> block<%= "s" if @turn.blocks != 1 %>. </h3>
 <% end %>
+
 
 <% if @direction == "right" %>
   <%= link_to image_tag("Heads.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
@@ -15,6 +16,6 @@
   <%= link_to image_tag("AllPenny.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
 <% end %>
 
-<h3> Now click Penny for the next direction! </h3>
+<h3> When you're done walking, click Penny for the next direction! </h3>
 
-<%= link_to "Finished!", walker_trip_path(walker_id: params[:walker_id], id: params[:trip_id]), method: :patch  %> 
+<h3><%= link_to "Finish my trip!", walker_trip_path(walker_id: params[:walker_id], id: params[:trip_id]), method: :patch  %></h3>
