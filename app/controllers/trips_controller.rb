@@ -23,7 +23,7 @@ class TripsController < ApplicationController
     walker_id = params[:walker_id]
     start_latitude, start_longitude = Trip.get_current_location
     trip = Trip.create(walker_id: walker_id, start_latitude: start_latitude, start_longitude: start_longitude)
-    first_turn_of_trip = Turn.create(blocks: generate_blocks, trip_id: trip.id, sequence: 1) # create the first turn
+    first_turn_of_trip = Turn.create(blocks: generate_blocks, trip_id: trip.id, sequence: 0) # create the first turn
     redirect_to walker_trip_turn_path(walker_id: walker_id, trip_id: trip.id, id: first_turn_of_trip.id)
   end
 

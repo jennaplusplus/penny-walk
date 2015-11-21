@@ -1,4 +1,4 @@
-<h1>You're on step <%= @turn.sequence %> of your trip </h1>
+<h1>You're on step <%= @turn.sequence + 1 %> of your trip </h1>
 
 <% if @turn.sequence == 1 %>
   <h3>To begin your trip, head <%= @direction %> for <%= @turn.blocks %> block<%= "s" if @turn.blocks != 1 %>. </h3>
