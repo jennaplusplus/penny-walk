@@ -1,0 +1,8 @@
+<%= @response %>
+<p>
+  <%= "latitude is #{@start_latitude}" %>
+</p>
+<p>
+  <%= "longitude is #{@start_longitude}" %>
+</p>
+<%= link_to "on google maps", "http://maps.google.com/maps?q=#{@start_latitude},#{@start_longitude}" %>

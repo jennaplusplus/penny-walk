@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'walkers#start'
 
+  get 'walkers/:walker_id/trips/:id/test_location' => 'trips#test_location'
+
   resources :walkers do
     resources :trips do
       resources :turns
