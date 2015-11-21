@@ -64,8 +64,8 @@ class TripsController < ApplicationController
       sequence_array.push(turn.sequence)
     end
 
-    generate_cartesian(left_right_array, blocks_array, sequence_array)
-    image_convert_params(x_array, y_array)
+    x_array, y_array = generate_cartesian(left_right_array, blocks_array, sequence_array)
+    convert_ratio = image_convert_params(x_array, y_array)
     image_to_canvas_points(convert_ratio, x_array, y_array)
 
     @x_coordinates = x_array
@@ -134,10 +134,10 @@ class TripsController < ApplicationController
   def image_convert_params(x_array, y_array)
     img_width = x_array.max - x_array.min
     img_height = y_array.max - y_array.min
-    if 500/img_width < 500/img_height
-      convert_ratio = 500/img_width
+    if 450/img_width < 450/img_height
+      convert_ratio = 450/img_width
     else
-      convert_ratio = 500/img_height
+      convert_ratio = 450/img_height
     end
     return convert_ratio
   end
