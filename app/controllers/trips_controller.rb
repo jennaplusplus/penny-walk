@@ -40,6 +40,7 @@ class TripsController < ApplicationController
 
   def end_trip
     @trip = Trip.find(params[:id])
+    @walker = @trip.walker
     @start_latitude = @trip.start_latitude
     @start_longitude = @trip.start_longitude
     @end_latitude, @end_longitude = Trip.get_current_location
@@ -48,6 +49,9 @@ class TripsController < ApplicationController
       blocks_traveled += turn.blocks
     end
     @blocks_traveled = blocks_traveled
+    @x_coordinates = [0, 0, 30, 30, 20]
+    @y_coordinates = [0, 40, 40, 60, 60]
+    @turns = @trip.turns.count + 2
     render :endtrip
   end
 

@@ -1,6 +1,6 @@
 <h1>You're on step <%= @turn.sequence + 1 %> of your trip </h1>
 
-<% if @turn.sequence == 1 %>
+<% if @turn.sequence == 0 %>
   <h3>To begin your trip, head <%= @direction %> for <%= @turn.blocks %> block<%= "s" if @turn.blocks != 1 %>. </h3>
 <% else %>
   <h2> <%= @heads_or_tails %>! </h2>
@@ -8,13 +8,24 @@
 <% end %>
 
 
-<% if @direction == "right" %>
-  <%= link_to image_tag("Heads.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
-<% elsif @direction == "left" %>
-  <%= link_to image_tag("Tails.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
-<% else %>
-  <%= link_to image_tag("AllPenny.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
-<% end %>
+
+
+<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+      <% if @direction == "right" %>
+        <%= link_to image_tag("Heads.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
+      <% elsif @direction == "left" %>
+        <%= link_to image_tag("Tails.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
+      <% else %>
+        <%= link_to image_tag("AllPenny.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
+      <% end %>
+		</div>
+		<div class="back">
+			<%= link_to image_tag("flip.png"), walker_trip_turns_path(walker_id: params[:walker_id], trip_id: params[:trip_id]), method: :post %>
+		</div>
+	</div>
+</div>
 
 <h3> When you're done walking, click Penny for the next direction! </h3>
 
