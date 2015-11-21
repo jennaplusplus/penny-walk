@@ -3,12 +3,28 @@ class TripsController < ApplicationController
     w = Walker.find(params[:walker_id])
   end
 
+  def generate_left_right
+    direction = rand(2)
+    case direction
+    when 0
+      return false
+    when 1
+      return true
+    end
+  end
+
+  def generate_blocks
+    blocks = rand(1..3)
+    return blocks
+  end
+
   def create
     walker_id = params[:walker_id]
     start_latitude = "37.4275124"
     start_longitude = "-122.1818026"
     trip = Trip.create(walker_id: walker_id, start_latitude: start_latitude, start_longitude: start_longitude)
-    redirect_to walker_trip_path(walker_id: walker_id, id: trip.id)
+    first_turn_of_trip = Turn.create(blocks: generate_blocks, trip_id: trip.id, sequence: 1) # create the first turn
+    redirect_to walker_trip_turn_path(walker_id: walker_id, trip_id: trip.id, id: first_turn_of_trip.id)
   end
 
   def show

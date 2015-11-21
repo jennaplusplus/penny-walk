@@ -1,0 +1,8 @@
+<h1>Your trip</h1>
+<% if @turn.blocks > 1 %>
+  <h3>To begin your trip, head straight for <%= @turn.blocks %> blocks. Then tap Penny the puppy for your next direction! </h3>
+<% else %>
+  <h3>To begin your trip, head straight for <%= @turn.blocks %> block. Then tap Penny the puppy for your next direction! </h3>
+<% end %>
+
+<%= link_to image_tag("Head_grey.png"), "/" %>

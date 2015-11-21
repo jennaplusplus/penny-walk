@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'walkers#index '
+  root 'walkers#index'
 
   get 'walkers/:walker_id/trips/:id/test_location' => 'trips#test_location', as: :test_location
 
