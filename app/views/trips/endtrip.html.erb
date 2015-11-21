@@ -7,9 +7,9 @@
 
           var xCoords = [<%= @x_coordinates.join(",") %> ]
           var yCoords = [<%= @y_coordinates.join(",") %> ]
+          var turns = <%= @turns %>
 
-
-          for(var i = 0; i < 6; i++) {
+          for(var i = 0; i < turns; i++) {
               ctx.beginPath();
               ctx.strokeStyle='purple';
               ctx.lineWidth=5;

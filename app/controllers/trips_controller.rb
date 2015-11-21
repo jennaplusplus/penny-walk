@@ -51,6 +51,7 @@ class TripsController < ApplicationController
     @blocks_traveled = blocks_traveled
     @x_coordinates = [0, 0, 30, 30, 20]
     @y_coordinates = [0, 40, 40, 60, 60]
+    @turns = @trip.turns.count + 2
     render :endtrip
   end
 
