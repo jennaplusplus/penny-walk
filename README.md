@@ -1,7 +1,7 @@
 # Penny Walk
 ## Team Members: Lauren, Sarah, Meighan, Jenna, Katie, Brittany, Barbara
 
-![doggy mascot]()
+![doggy mascot](https://raw.githubusercontent.com/jennaplusplus/penny-walk/master/app/assets/images/Heads.png)
 
 ## Overview
 _Penny walk_ is ideal for people who want a little bit of spontaneity in their walks. This app will create a unique walking path on the fly for the user as they are walking.
