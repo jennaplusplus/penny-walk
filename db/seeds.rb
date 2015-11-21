@@ -14,16 +14,16 @@ walkers = [
 ]
 
 turns = [
-  {left_right: 1, blocks: 1, trip_id: 1, sequence: 1},
-  {left_right: 0, blocks: 2, trip_id: 2, sequence: 1},
-  {left_right: 0, blocks: 2, trip_id: 1, sequence: 2},
-  {left_right: 1, blocks: 3, trip_id: 2, sequence: 3},
-  {left_right: 1, blocks: 3, trip_id: 1, sequence: 3},
-  {left_right: 0, blocks: 1, trip_id: 2, sequence: 2},
-  {left_right: 0, blocks: 2, trip_id: 1, sequence: 4},
-  {left_right: 1, blocks: 3, trip_id: 2, sequence: 1},
-  {left_right: 0, blocks: 2, trip_id: 1, sequence: 5},
-  {left_right: 1, blocks: 1, trip_id: 1, sequence: 3}
+  {left_right: true, blocks: 1, trip_id: 1, sequence: 1},
+  {left_right: false, blocks: 2, trip_id: 2, sequence: 1},
+  {left_right: false, blocks: 2, trip_id: 1, sequence: 2},
+  {left_right: true, blocks: 3, trip_id: 2, sequence: 3},
+  {left_right: true, blocks: 3, trip_id: 1, sequence: 3},
+  {left_right: false, blocks: 1, trip_id: 2, sequence: 2},
+  {left_right: false, blocks: 2, trip_id: 1, sequence: 4},
+  {left_right: true, blocks: 3, trip_id: 2, sequence: 4},
+  {left_right: false, blocks: 2, trip_id: 1, sequence: 5},
+  {left_right: true, blocks: 1, trip_id: 2, sequence: 5}
 ]
 
 trips = [
