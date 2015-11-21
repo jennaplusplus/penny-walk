@@ -1,0 +1,53 @@
+<head>
+  <script type="text/javascript">
+      function draw(){
+        var canvas = document.getElementById('tutorial');
+        if (canvas.getContext){
+          var ctx = canvas.getContext('2d');
+
+          var xCoords = [<%= @x_coordinates.join(",") %> ]
+          var yCoords = [<%= @y_coordinates.join(",") %> ]
+          var turns = <%= @turns %>
+
+          for(var i = 0; i < turns; i++) {
+              ctx.beginPath();
+              ctx.strokeStyle='purple';
+              ctx.lineWidth=5;
+              ctx.moveTo(xCoords[i] + 250,yCoords[i]*-1 + 250);
+              ctx.lineTo(xCoords[i+1] + 250,yCoords[i+1]*-1 + 250);
+              ctx.stroke();
+          }
+
+
+        }
+      }
+
+
+    </script>
+    <style type="text/css">
+   canvas { border: 1px solid black; }
+ </style>
+</head>
+<body onload="draw();">
+   <h1>It's over!</h1>
+  <h2>You traveled <%= @blocks_traveled %> blocks.</h2>
+
+  <canvas id="tutorial" width="500" height="500"></canvas>
+
+
+
+  <p>
+      <%= link_to "Click for Google maps directions back to your starting location", "http://maps.google.com/?saddr=#{@end_latitude},#{@end_longitude}&daddr=#{@start_latitude},#{@start_longitude}&dirflg=w" %>
+  </p>
+
+  <p>
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+      src="https://www.google.com/maps/embed/v1/directions?origin=<%=@end_latitude%>,<%=@end_longitude%>&destination=<%=@start_latitude%>,<%=@start_longitude%>&mode=walking&key=<%= ENV['GOOGLE_KEY'] %>" allowfullscreen></iframe>
+  </p>
+  <p>
+    <%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
+  </p>
+  <p>
+    <%= link_to "See my trips", walker_trips_path(@walker.id) %>
+  </p>
+ </body>

@@ -1,5 +1,8 @@
-<h1><%= @walker.name %></h1>
+<h1>Hi, <%= @walker.name %>!</h1>
+<p>
+  <%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
+</p>
 
-<h3>Travel log (link to past trips)</h3>
-
-<%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
+<p>
+  <%= link_to "See my lifetime trips", walker_trips_path(@walker.id) %>  
+</p>
