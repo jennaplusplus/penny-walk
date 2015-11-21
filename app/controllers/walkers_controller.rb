@@ -4,4 +4,8 @@ class WalkersController < ApplicationController
 
   end
 
+  def index
+
+  end
+
 end
