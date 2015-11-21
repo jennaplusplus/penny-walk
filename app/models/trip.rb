@@ -11,11 +11,10 @@ class Trip < ActiveRecord::Base
     return start_latitude, start_longitude
   end
 
-  # def get_directions
-  #   @starting_location = HTTParty.post(CURRENT_COORDINATES, :verify => false)
-  #   @end_lat = '37.4275124'
-  #   @end_long =  '-122.1818026'
-  #   render :directions
-  # end
+  def get_directions
+    # retrieve start lat/long for current trip
+    # retrieve end lat/long for current trip
+    # maybe not a method after all
+  end
 
 end

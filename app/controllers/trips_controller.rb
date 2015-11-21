@@ -1,4 +1,8 @@
 class TripsController < ApplicationController
+  def index
+    w = Walker.find(params[:walker_id])
+  end
+
   def create
     walker_id = params[:walker_id]
     start_latitude = "37.4275124"
@@ -12,8 +16,15 @@ class TripsController < ApplicationController
   end
 
   def test_location
-    trip = Trip.find(params[:walker_id])
-    @start_latitude, @start_longitude = trip.get_current_location
+    @trip = Trip.find(params[:id])
+    @start_latitude, @start_longitude = @trip.get_current_location
+  end
+
+  def update
+    @trip = Trip.find(params[:id])
+    end_latitude, end_longitude = @trip.get_current_location
+    @trip.update(end_latitude: end_latitude, end_longitude: end_longitude)
+    redirect_to test_location_path(walker_id: @trip.walker_id, id: params[:id])
   end
 
 end
