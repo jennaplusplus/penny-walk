@@ -6,3 +6,9 @@
   <iframe width="600" height="450" frameborder="0" style="border:0"
     src="https://www.google.com/maps/embed/v1/directions?origin=<%=@end_latitude%>,<%=@end_longitude%>&destination=<%=@start_latitude%>,<%=@start_longitude%>&mode=walking&key=<%= ENV['GOOGLE_KEY'] %>" allowfullscreen></iframe>
 </p>
+<p>
+  <%= link_to "Start a new trip!", walker_trips_path(@walker.id), method: :post %>
+</p>
+<p>
+  <%= link_to "See my trips", walker_trips_path(@walker.id) %>
+</p>
